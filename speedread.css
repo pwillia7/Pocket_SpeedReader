@@ -1,0 +1,10 @@
+.SRactive{
+color: red !important;
+}
+.SRinactive{
+color: gray;
+}
+.SRwrap{
+	color: black;
+}
+
