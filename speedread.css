@@ -2,10 +2,10 @@
 	color: red !important;
 }
 .SRinactive{
-background: #F5F5F5;
-border: 3px solid darkgray;
-border-radius: 30px;
-padding: 10px 80px;
+	background: #F5F5F5;
+	border: 3px solid darkgray;
+	border-radius: 30px;
+	padding: 10px 80px;
 }
 }
 .SRwrap{
@@ -20,7 +20,8 @@ padding: 10px 80px;
 }
 #RBWrap {
 	position: fixed;
-	top: 0;
+	top: 133px; 
+	left: -544px;
 	z-index: 333333;
 	width: 100%;
 	font-size: 24px;
