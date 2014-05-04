@@ -18,12 +18,9 @@ GM_addStyle (newCSS);
 var i=0;
 var limit;
 var words = [];
-var wrapperTemplate = "<span class=\"SRwrap\">";
 var count = 0;
-var article = document.getElementsByClassName('text_body')[0].textContent;
-var speedValue=150;
-var quoteOn = false;
-
+var speedValue=125;
+var pause = false;
 
 //add drag to Jquery
 (function($) {
@@ -82,22 +79,45 @@ function insertHTML(htmlStr) {
 function speedRead(){
   // setup ReadingBox
   document.getElementById('container').insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
+  document.getElementById('RBMain').insertBefore(insertHTML("<span id=\"RBMenu\"><span class=\"wpmWrap\"><span class=\"wpmLabel\">WPM: </span><input value=\""+60000/speedValue+"\"type=\"text\"class=\"wpm\"></span><span id=\"pausedRB\" style=\"display: none;\"></span></span>"));
+  // document.getElementById('speedValue').innerHTML = speedValue;
+$( "#RBMain" ).drags();
 
-$( "#RBWrap" ).drags();
+$("#RBMain").hover(
+  function(){
+    document.getElementById('pausedRB').innerHTML = i;
+    pause = true;
+    $(".SRinactive").removeClass('unpause');
+    $("#RBMenu").fadeIn();
+  },
+  function(){
+    pause = false;
+    speedRead1();
+    document.getElementById('pausedRB').innerHTML = "";
+    $(".SRinactive").addClass('unpause');
+    $("#RBMenu").fadeOut();
+    
+
+  });
  
   words = document.getElementsByClassName('text_body')[0].textContent.split(' ');
-  limit = words.length;
+  
   speedRead1();
 }
 
 function speedRead1() {
+      if(document.getElementById('pausedRB').innerHTML > 0){
+        i = document.getElementById('pausedRB').innerHTML;
+      }
       if(document.getElementsByClassName('SRactive').length!== 0){
       document.getElementsByClassName('SRactive')[0].className = '';
   }
+    limit = words.length;
+    var readingBox;
     var halflength = words[i].length/2;
     var currentWord = 
       // start html wrap
-      "<span class=\"SRinactive\">" +
+      "<span class=\"SRinactive unpause\">" +
         // preceding word text
         //words[i-1] +
         // start active word
@@ -112,9 +132,7 @@ function speedRead1() {
           // last half of active word
           words[i].substr(halflength+1,words[i].length) +
         // end active word
-        " </span>" +
-      // following word text 
-      //words[i+1] +
+        "</span>" +
       // end html wrap
       "</span>" ;
     count+=words[i].length+1;
@@ -122,19 +140,20 @@ function speedRead1() {
 
 
 
-    
-    document.getElementById('RBMain').innerHTML = currentWord;
+    $('.SRinactive').remove();
+    document.getElementById('RBMain').insertBefore(insertHTML(currentWord),document.getElementById('RBMenu'));
 
-
-    // if(words[i].indexOf('"')>-1 && quoteOn){
-    //   document.getElementById('RBWrap').className = ""
-    //   quoteOn = false;
-    // } else if(words[i].indexOf('"')>-1){
-    //   document.getElementById('RBWrap').className = "quoteOn";
-    // quoteOn = true;
-    // }
     i++;
-    if (i<limit) setTimeout(speedRead1,speedValue);
+
+
+    // run RB
+
+    if (i < limit && (!pause)){
+       readingBox = setTimeout(speedRead1,speedValue);
+    }
+    else{
+        clearTimeout(readingBox);
+    }
 }
 
 
