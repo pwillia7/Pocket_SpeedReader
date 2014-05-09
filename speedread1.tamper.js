@@ -6,7 +6,7 @@
 // @resource Customcss speedread.css 
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // @require http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js
-// @match      *
+// @match      *://getpocket.com/a/read/*
 // @copyright  2014+, Patrick Williams
 // @grant		GM_addStyle
 // @grant       GM_getResourceText
@@ -36,10 +36,9 @@ function insertHTML(htmlStr) {
 }
 
 
-
 function speedRead(){
   // setup ReadingBox
-  document.body.insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
+  document.getElementById('container').insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
   document.getElementById('RBMain').insertBefore(insertHTML("<span id=\"RBMenu\"><span class=\"wpmWrap\"><span class=\"wpmLabel\">WPM: </span><input value=\""+60000/speedValue+"\"type=\"text\"class=\"wpm\"></span><span id=\"pausedRB\" style=\"display: none;\"></span></span>"));
   // document.getElementById('speedValue').innerHTML = speedValue;
 $( "#RBMain" ).draggable();
@@ -60,24 +59,13 @@ $("#RBMain").hover(
     
 
   });
-//need to change to ajax coz cross domain
-    var token = "1f881b1db566277b0bf2ccd942274d2bee626518";
-    var url = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
-    jQuery.getJSON("https://www.readability.com/api/content/v1/parser?url="+ url +"&token=" + token + "&callback=?",
-      function(data){
-        var article = data.content;
-        var tempSpan = document.createElement('span');
-        tempSpan.innerHTML = article;
-        words = tempSpan.textContent.split(' ');
-          console.log(words);
-      });
-
+ 
+  words = document.getElementsByClassName('text_body')[0].textContent.split(' ');
   
   speedRead1();
 }
 
 function speedRead1() {
-
       if(document.getElementById('pausedRB').innerHTML > 0){
         i = document.getElementById('pausedRB').innerHTML;
       }
