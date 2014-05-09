@@ -40,7 +40,7 @@ function insertHTML(htmlStr) {
 
 function speedRead(){
   // setup ReadingBox
-  document.body.children()[0].insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
+  document.body.children[0].insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
   document.getElementById('RBMain').insertBefore(insertHTML("<span id=\"RBMenu\"><span class=\"wpmWrap\"><span class=\"wpmLabel\">WPM: </span><input value=\""+60000/speedValue+"\"type=\"text\"class=\"wpm\"></span><span id=\"pausedRB\" style=\"display: none;\"></span></span>"));
   // document.getElementById('speedValue').innerHTML = speedValue;
 $( "#RBMain" ).draggable();
