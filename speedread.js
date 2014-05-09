@@ -63,7 +63,7 @@ $("#RBMain").hover(
 
   });
  
-  words = document.getElementsByClassName('text_body')[0].textContent.split(' ');
+  words = ['bleep','bloop','blork','blamp','sksksk'];
   
   speedRead1();
 }
