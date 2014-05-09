@@ -4,16 +4,16 @@ if (!($ = window.jQuery)) {
     script2 = document.createElement('script');
     script2.src= 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'
     script.src = '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'; 
-    script.onload=speedRead;
+    script.onload=startReadingBox;
     document.body.appendChild(script);
     document.body.appendChild(script2);
 } 
 else {
-    speedRead();
+    startReadingBox();
 }
  
 
-
+function startReadingBox(){
 
 //need to add , ensure jquery and jqueryui are loaded
   var i=0;
@@ -63,8 +63,7 @@ $("#RBMain").hover(
 
   });
  
-  words = ['bleep','bloop','bleep','blomp'];
-  //document.getElementsByClassName('text_body')[0].textContent.split(' ');
+  words = document.getElementsByClassName('text_body')[0].textContent.split(' ');
   
   speedRead1();
 }
@@ -122,4 +121,4 @@ function speedRead1() {
 
 
 
-
+}
