@@ -120,5 +120,5 @@ function speedRead1() {
 }
 
 
-
+speedRead();
 }
