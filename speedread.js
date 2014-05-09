@@ -18,12 +18,7 @@ else {
 //need to add , ensure jquery and jqueryui are loaded
 
 
-var i=0;
-var limit;
-var words = [];
-var count = 0;
-var speedValue=125;
-var pause = false;
+
 
 
 //html string helper function
@@ -39,6 +34,12 @@ function insertHTML(htmlStr) {
 
 
 function speedRead(){
+  var i=0;
+  var limit;
+  var words = [];
+  var count = 0;
+  var speedValue=125;
+  var pause = false;
   // setup ReadingBox
   document.body.children[0].insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
   document.getElementById('RBMain').insertBefore(insertHTML("<span id=\"RBMenu\"><span class=\"wpmWrap\"><span class=\"wpmLabel\">WPM: </span><input value=\""+60000/speedValue+"\"type=\"text\"class=\"wpm\"></span><span id=\"pausedRB\" style=\"display: none;\"></span></span>"));
@@ -62,7 +63,8 @@ $("#RBMain").hover(
 
   });
  
-  words = document.getElementsByClassName('text_body')[0].textContent.split(' ');
+  words = ['bleep','bloop','bleep','blomp'];
+  //document.getElementsByClassName('text_body')[0].textContent.split(' ');
   
   speedRead1();
 }
