@@ -1,21 +1,19 @@
 
-if (!($ = window.jQuery)) { 
-    script = document.createElement( 'script' );
-    script2 = document.createElement('script');
-    script2.src= 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'
-    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'; 
-    script.onload=startReadingBox;
-    document.body.appendChild(script);
-    document.body.appendChild(script2);
-} 
-else {
-    startReadingBox();
-}
- 
+
 
 function startReadingBox(){
 
-//need to add , ensure jquery and jqueryui are loaded
+  // add Jquery and JqueryUI
+  script = document.createElement( 'script' );
+  script2 = document.createElement('script');
+  script2.src= 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'
+  script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'; 
+  script.onload=startReadingBox;
+  document.body.appendChild(script);
+  document.body.appendChild(script2);
+
+ 
+  // 'global' vars
   var i=0;
   var limit;
   var words = [];
