@@ -3,7 +3,7 @@ if (!($ = window.jQuery)) {
     script = document.createElement( 'script' );
     script2 = document.createElement('script');
     script2.src= 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js'
-    script.src = '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'; 
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'; 
     script.onload=startReadingBox;
     document.body.appendChild(script);
     document.body.appendChild(script2);
@@ -41,7 +41,7 @@ function insertHTML(htmlStr) {
 function speedRead(){
 
   // setup ReadingBox
-  document.body.children[0].insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
+  document.body.insertBefore(insertHTML("<div id=\"RBWrap\"><div id=\"RBMain\"></div></div>"));
   document.getElementById('RBMain').insertBefore(insertHTML("<span id=\"RBMenu\"><span class=\"wpmWrap\"><span class=\"wpmLabel\">WPM: </span><input value=\""+60000/speedValue+"\"type=\"text\"class=\"wpm\"></span><span id=\"pausedRB\" style=\"display: none;\"></span></span>"));
   // document.getElementById('speedValue').innerHTML = speedValue;
 //$( "#RBMain" ).draggable();
@@ -118,7 +118,6 @@ function speedRead1() {
         clearTimeout(readingBox);
     }
 }
-
 
 speedRead();
 }
